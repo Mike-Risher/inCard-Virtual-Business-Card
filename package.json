@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mike-Risher/InCard-App.git"
+    "url": "git+https://github.com/Mike-Risher/inCard-Virtual-Business-Card.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mike-Risher/InCard-App/issues"
+    "url": "https://github.com/Mike-Risher/inCard-Virtual-Business-Card/issues"
   },
-  "homepage": "https://github.com/Mike-Risher/InCard-App#readme",
+  "homepage": "https://github.com/Mike-Risher/inCard-Virtual-Business-Card#readme",
   "dependencies": {
     "cookie-parser": "^1.3.5",
     "body-parser": "^1.13.3",
