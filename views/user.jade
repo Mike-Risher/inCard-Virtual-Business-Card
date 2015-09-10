@@ -1,0 +1,118 @@
+extends card
+
+block content
+  div(id="container", ng-controller="postgreSQLCtrl")
+    h2 Your Business Card Data
+    h3 You can edit any of the fields below. To add to the database click the button at the bottom.
+
+    table(border='0')
+        tr
+          td Name:
+          td(style="width: 400px;")
+            input(id="name", maxlength="50", ng-model="name", type="text")
+        tr
+          td Description:
+          td 
+            input(id="description", maxlength="50", ng-model="description", type="text")
+        tr
+          td Location: 
+          td 
+            input(id="location", maxlength="50", ng-model="location", type="text")
+        tr
+          td Company:
+          td 
+            input(id="company", maxlength="50", ng-model="company", type="text")
+        tr
+          td Title:
+          td 
+            input(id="jtitle", maxlength="50", ng-model="jtitle", type="text")
+        tr
+          td URL for Your Photo:
+          td 
+            input(id="photo", maxlength="200", ng-model="photo", type="text")
+        tr
+          td Your Photo:
+          td 
+            img(src='{{photo}}', width='80', height='80')
+    
+    h3 Your virtual business card:
+    
+    #yourCard
+        #cardName {{name}}
+          .cardLine {{description}}
+          .cardLine {{location}}
+          #cardPhoto
+            img(src='{{photo}}', width='80', height='80')
+          #bottomRight
+            .cardBottomRight {{company}}
+            .cardBottomRight {{jtitle}}
+
+    hr
+    | <button ng-click="addRecord()" id="btnAdd" name="btnAdd" class="btn btn-danger">Add to database</button>
+    | <button ng-click="readAll()" id="btnRead" name="btnRead" class="btn btn-danger">Refresh database</button>
+    hr
+
+    h3 Below is all the business card data in the database.
+    table(border='1' id='allData')
+      thead
+        tr
+          th   ID
+          th  Name 
+          th  Description 
+          th  Location 
+          th  Company 
+          th  Title 
+          th  Photo 
+          th    
+      tbody
+        tr(ng-repeat='item in dataset')
+          td  {{item.id}} 
+          td  {{item.name}} 
+          td  {{item.description}} 
+          td  {{item.location}} 
+          td  {{item.company}} 
+          td  {{item.jtitle}} 
+          td(width="100")  {{item.photo}} 
+          td  
+            span(title='delete this record', style='cursor:pointer', ng-click='delRecord(item.id)') Delete
+
+
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js')  
+  script.
+    var myApp = angular.module('postgreSQL',[ ]);
+      myApp.controller('postgreSQLCtrl', ['$scope' ,'$http',  function($scope,$http) {
+      $scope.name = "#{name}";
+      $scope.description = "#{description}";
+      $scope.location = "#{location}";
+      $scope.company = "#{company}";
+      $scope.jtitle = "#{jtitle}";
+      $scope.photo = "#{photo}";
+      $scope.addRecord = function(){
+      $http({method: 'GET', url: '/db/addRecord?name='+$scope.name+'&description='+
+      $scope.description+'&location='+$scope.location+'&company='+
+      $scope.company+'&jtitle='+$scope.jtitle+'&photo='+$scope.photo}).
+      success(function(data, status) {
+      alert('Record Added');
+      $scope.readAll();
+      });
+      }
+      $scope.readAll = function(){
+      $http({method: 'GET', url: '/db/readRecords'}).
+      success(function(data, status) { 
+      $scope.dataset = data; 
+      }).
+      error(function(data, status) {
+      $scope.dataset = data || "Request failed "; 
+      }); 
+      }
+      $scope.delRecord = function(recId){
+      console.log(recId);
+      if(confirm('Are you sure you want to delete this record ? ')) {
+      $http({method: 'GET', url: '/db/delRecord?id='+recId}).
+      success(function(data, status) {  
+      $scope.readAll();
+      });
+      }
+      }                 
+      $scope.readAll();
+      }]);
