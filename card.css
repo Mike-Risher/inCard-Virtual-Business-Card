@@ -1,0 +1,96 @@
+html,body {
+	margin: 5px;
+	padding: 0px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px}
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a}
+.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit}
+.h1,.h2,.h3,h1,h2,h3 {
+    margin-top: 20px;
+    margin-bottom: 10px}
+.h2,h2 {
+    font-size: 30px}
+.h3,h3 {
+    font-size: 24px}
+p {
+    margin: 0 0 10px}
+.lead {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4}
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit}
+table {
+  font-size: 1.2em;
+}
+input {
+ font-size: 1.2em;
+ width: 400px; 
+}
+#yourCard {
+	width: 350px;
+	height: 200px;
+	background-image: url("/public/css/paper.jpg");
+	color: #000;
+	margin: 10px 0;
+}
+
+#cardName {
+	padding-top: 20px;
+	font: 24px 'Myriad Pro', Helvetica, sans-serif;
+	text-align: center;
+}
+.cardLine {
+	font: 18px 'Myriad Pro', Helvetica, sans-serif;
+	text-align: center;
+}
+#cardPhoto {
+	padding: 20px 0 0 10px;
+	float: left;
+}
+.cardBottomRight {
+	font: 18px 'Myriad Pro', Helvetica, sans-serif;
+	float: right;
+	clear: right;
+}
+#bottomRight {
+	padding: 50px 10px 0 0;
+}
+#allData td {
+  max-width: 500px;
+  word-wrap: break-word;
+}
